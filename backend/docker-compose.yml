@@ -1,0 +1,15 @@
+services:
+  pythonapp:
+    build: ./app/
+    command: sh -c "python3 ./testpy"
+    depends_on:
+      - mysql
+
+  mysql:
+    restart: always
+    image: mysql
+    environment:
+      MYSQL_DATABASE: "db"
+      MYSQL_ROOT_PASSWORD: "root"
+    ports:
+      - "3306:3306"
