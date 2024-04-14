@@ -1,15 +1,15 @@
 services:
   pythonapp:
     build: ./app/
-    command: sh -c "python3 ./testpy"
+    command: sh -c "sleep 10s ; python3 test.py"
     depends_on:
       - mysql
 
   mysql:
     restart: always
-    image: mysql
+    build: ./mysql/
     environment:
-      MYSQL_DATABASE: "db"
+      MYSQL_DATABASE: "FinderDB"
       MYSQL_ROOT_PASSWORD: "root"
     ports:
       - "3306:3306"
