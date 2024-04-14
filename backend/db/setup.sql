@@ -1,4 +1,4 @@
-use FinderDB;
+USE FinderDB;
 
 CREATE TABLE IF NOT EXISTS Employee (
     EmployeeID INT PRIMARY KEY,
