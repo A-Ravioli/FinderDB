@@ -10,7 +10,7 @@ app.config['MYSQL_DB'] = 'FinderDB'
 
 mysql = MySQL(app)
 
-@app.route('/')
+@app.route('/api/test')
 def hello_world():
     cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM Employee')
