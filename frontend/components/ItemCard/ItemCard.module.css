@@ -1,0 +1,12 @@
+#card-container {
+  display: flex;
+}
+
+#item-name {
+  font-size: var(--primary-heading-font-size);
+}
+
+#item-info-container {
+  display: flex;
+  flex-direction: column;
+}

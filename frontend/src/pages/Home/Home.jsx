@@ -1,25 +1,16 @@
 import { useEffect, useState } from "react";
+import HomeCSS from "./Home.module.css";
+import ItemCard from "../../../components/ItemCard/ItemCard";
 
 function Home() {
-  const [data, setData] = useState(["test", "test"]);
-
-  useEffect(() => {
-    fetch("/api/test")
-      .then((res) => {
-        console.log(res);
-        return res.json();
-      })
-      .then((data) => {
-        setData(data);
-      });
-  }, []);
   return (
-    <>
-      <h1>Hello</h1>
-      {data.map((item) => (
-        <h1>{item}</h1>
-      ))}
-    </>
+    <div id={HomeCSS["items-container"]}>
+      <ItemCard />
+      <ItemCard />
+      <ItemCard />
+      <ItemCard />
+      <ItemCard />
+    </div>
   );
 }
 
