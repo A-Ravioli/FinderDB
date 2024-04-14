@@ -1,9 +1,6 @@
 FROM python:3.9
-
-RUN pip install flask
-RUN pip install flask_mysqldb
-
+COPY requirements.txt .
+RUN pip install --r ./requirements.txt
 WORKDIR /usr/app/src
-
-COPY api.py ./
+COPY api.py .
 

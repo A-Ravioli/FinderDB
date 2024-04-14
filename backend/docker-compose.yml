@@ -1,7 +1,7 @@
 services:
   api:
     build: ./api/
-    command: sh -c "sleep 5s ; python3 api.py"
+    command: sh -c "python3 api.py"
     ports:
       - "8000:8000"
     depends_on:

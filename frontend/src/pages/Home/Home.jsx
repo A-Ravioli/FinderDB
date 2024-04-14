@@ -15,7 +15,10 @@ function Home() {
   }, []);
   return (
     <>
-      <h1>{data?.[2]}</h1>
+      <h1>Hello</h1>
+      {data.map((item) => (
+        <h1>{item}</h1>
+      ))}
     </>
   );
 }
