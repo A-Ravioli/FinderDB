@@ -1,20 +1,20 @@
+import ClaimItemButton from "../ClaimItemButton/ClaimItemButton";
 import ItemCardCSS from "./ItemCard.module.css";
 
-function ItemCard() {
+function ItemCard({ itemData }) {
   return (
-    <div id={ItemCardCSS["card-container"]}>
-      <img src="" alt="" />
-      <div id={ItemCardCSS["item-info-container"]}>
-        <h1 id={ItemCardCSS["item-name"]}>Item name</h1>
-        <p>Status</p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-          exercitationem voluptatibus esse iusto tempora cupiditate deserunt
-          culpa illum et fuga odit doloribus excepturi rem, neque, temporibus
-          labore ut dolore debitis. Asperiores autem hic, ex perferendis ipsum
-          atque alias neque magni.
-        </p>
+    <div className={ItemCardCSS["card-container"]}>
+      <div className={ItemCardCSS["item-info-container"]}>
+        <h1 className={ItemCardCSS["item-name"]}>{itemData.itemname}</h1>
+        <p>Status: {itemData.status}</p>
+        <p>Description: {itemData.description}</p>
+        <ClaimItemButton itemData={itemData} />
       </div>
+      <img
+        src="https://i.kym-cdn.com/entries/icons/facebook/000/048/633/Screenshot_2024-02-27_at_1.49.23_PM.jpg"
+        alt=""
+        className={ItemCardCSS["item-img"]}
+      />
     </div>
   );
 }

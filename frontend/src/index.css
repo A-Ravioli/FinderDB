@@ -14,9 +14,24 @@
 :root {
   --primary-horizontal-padding: 64px;
   --primary-heading-font-size: 1.2rem;
+  --primary-border: 1px solid #e0e0e0;
 }
 
-.submit-btn {
+.btn-style {
   background: black;
   color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }

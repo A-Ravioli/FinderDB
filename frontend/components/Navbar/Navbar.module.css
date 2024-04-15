@@ -3,11 +3,11 @@
   align-items: center;
   padding: 0 var(--primary-horizontal-padding);
   height: 80px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: var(--primary-border);
 }
 
 #nav-container > *:not(:first-child) {
-  margin-left: 20px;
+  margin-left: 40px;
 }
 
 #nav-container > * {
