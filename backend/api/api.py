@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_mysqldb import MySQL
+import json
 
 app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'db'
@@ -20,7 +21,7 @@ def tuple_to_dict(columns, data):
     return result
 
 # Get all items
-@app.route('/api/all-items')
+@app.route('/api/all-items', methods=['GET'])
 def all_items():
     cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM Item')
@@ -28,6 +29,27 @@ def all_items():
     result = cur.fetchall()
     cur.close()
     return jsonify(tuple_to_dict(columns, result))
+
+# Check if employee exists
+@app.route('/api/employee-exists/<emp_id>', methods=['GET'])
+def employee_exists(emp_id):
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT EXISTS(SELECT * FROM Employee WHERE Employee_ID = %s);', emp_id)
+    result = cur.fetchone()[0]
+    cur.close()
+    return json.dumps(result == 1)
+
+# Updates item status and id of employee who claimed it
+@app.route('/api/claim-item', methods=['PATCH'])
+def claim_item():
+    query = request.args.to_dict()
+    emp_id = query.get("employeeId")
+    item_id = query.get("itemId")
+    cur = mysql.connection.cursor()
+    cur.execute("""UPDATE Item SET ClaimsE_ID = %s, Status = "Claimed" WHERE ItemID = %s;""", (emp_id, item_id))
+    cur.close()
+    mysql.connection.commit()
+    return f"""UPDATE Item SET ClaimsE_ID = {emp_id}, Status = "Claimed" WHERE ItemID = {item_id};"""
 
 # Get item by id
 @app.route('/api/item/<int:id>', methods=['GET'])
