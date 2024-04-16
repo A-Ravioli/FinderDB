@@ -9,6 +9,12 @@ function Navbar() {
       </Link>
       <p>File request</p>
       <p>Report item</p>
+      <Link to="/my-claims">
+        <p>My claims</p>
+      </Link>
+      <Link to="/profile">
+        <p>Profile</p>
+      </Link>
     </nav>
   );
 }

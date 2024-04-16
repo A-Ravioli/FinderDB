@@ -1,6 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import ClaimItemButtonCSS from "./ClaimItemButton.module.css";
-import { toast } from "react-toastify";
 import { useState } from "react";
 import ClaimItemForm from "../ClaimItemForm/ClaimItemForm";
 

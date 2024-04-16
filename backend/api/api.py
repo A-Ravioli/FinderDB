@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
 from flask_mysqldb import MySQL
 import json
 
@@ -30,14 +30,15 @@ def all_items():
     cur.close()
     return jsonify(tuple_to_dict(columns, result))
 
-# Check if employee exists
-@app.route('/api/employee-exists/<emp_id>', methods=['GET'])
-def employee_exists(emp_id):
+# Get items claimed by employee 002828141
+@app.route('/api/claimed-items', methods=['GET'])
+def claimed_items():
     cur = mysql.connection.cursor()
-    cur.execute('SELECT EXISTS(SELECT * FROM Employee WHERE Employee_ID = %s);', emp_id)
-    result = cur.fetchone()[0]
+    cur.execute("""SELECT * FROM Item WHERE ClaimsE_ID = 002828141""")
+    columns = [desc[0] for desc in cur.description]
+    result = cur.fetchall()
     cur.close()
-    return json.dumps(result == 1)
+    return jsonify(tuple_to_dict(columns, result))
 
 # Updates item status and id of employee who claimed it
 @app.route('/api/claim-item', methods=['PATCH'])
@@ -49,17 +50,7 @@ def claim_item():
     cur.execute("""UPDATE Item SET ClaimsE_ID = %s, Status = "Claimed" WHERE ItemID = %s;""", (emp_id, item_id))
     cur.close()
     mysql.connection.commit()
-    return f"""UPDATE Item SET ClaimsE_ID = {emp_id}, Status = "Claimed" WHERE ItemID = {item_id};"""
-
-# Get item by id
-@app.route('/api/item/<int:id>', methods=['GET'])
-def get_item(id):
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM Item WHERE id = %s', (id,))
-    columns = [desc[0] for desc in cur.description]
-    item = cur.fetchone()
-    cur.close()
-    return jsonify(dict(zip(columns, item))) if item else ('Item not found', 404)
+    return ('Item updated', 200)
 
 # Add a new item
 @app.route('/api/items', methods=['POST'])

@@ -1,14 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import App from "./App";
+import MyClaims from "./pages/MyClaims/MyClaims";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -16,6 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
+          <Route path="/my-claims" element={<MyClaims />} />
         </Route>
       </Routes>
     </BrowserRouter>

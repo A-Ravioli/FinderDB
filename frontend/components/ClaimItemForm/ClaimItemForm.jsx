@@ -1,19 +1,14 @@
 import FormField from "../FormField/FormField";
 import * as Form from "@radix-ui/react-form";
 import ClaimItemFormCSS from "./ClaimItemForm.module.css";
+import { toast } from "react-toastify";
+import { useQueryClient } from "react-query";
 
 function ClaimItemForm({ itemData, setModalIsOpen }) {
+  const queryClient = useQueryClient();
   const submitClaim = async (e) => {
     e.preventDefault();
     const id = e.target[0].value;
-
-    const res = await fetch(`/api/employee-exists/${id}`);
-    const data = await res.json();
-
-    if (!data) {
-      toast.error("Employee ID does not exist");
-      return;
-    }
 
     const params = new URLSearchParams({
       employeeId: id,
@@ -22,9 +17,19 @@ function ClaimItemForm({ itemData, setModalIsOpen }) {
 
     await fetch(`/api/claim-item?` + params, {
       method: "PATCH",
-    });
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Employee does not exist");
+        }
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
 
     setModalIsOpen(false);
+    toast.success("Claim successful!");
+    queryClient.invalidateQueries({ queryKey: ["items"] });
   };
 
   return (

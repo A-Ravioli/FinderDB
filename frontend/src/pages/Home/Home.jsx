@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react";
 import HomeCSS from "./Home.module.css";
 import ItemCard from "../../../components/ItemCard/ItemCard";
+import { useQuery } from "react-query";
+import getItems from "../../../data/getItems";
 
 function Home() {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    fetch("/api/all-items")
-      .then((res) => res.json())
-      .then((data) => {
-        setItems(data);
-      });
-  }, []);
+  const { data: items } = useQuery({ queryKey: ["items"], queryFn: getItems });
 
   return (
     <div id={HomeCSS["items-container"]}>
-      {items.map((itemData) => (
+      <h1>Unclaimed items</h1>
+      {items?.map((itemData) => (
         <ItemCard itemData={itemData} />
       ))}
     </div>
