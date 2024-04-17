@@ -7,7 +7,11 @@ function ItemCard({ itemData }) {
       <div className={ItemCardCSS["item-info-container"]}>
         <h1 className={ItemCardCSS["item-name"]}>{itemData.itemname}</h1>
         <p>Status: {itemData.status}</p>
-        {itemData.claimse_id && <p>Claimed by: {itemData.claimse_id}</p>}
+        {itemData.claimse_id && (
+          <p>
+            Claimed by: {itemData.fname} {itemData.lname}
+          </p>
+        )}
         <p>Description: {itemData.description}</p>
         <ClaimItemButton itemData={itemData} />
       </div>

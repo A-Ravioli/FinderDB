@@ -24,7 +24,7 @@ def tuple_to_dict(columns, data):
 @app.route('/api/all-items', methods=['GET'])
 def all_items():
     cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM Item')
+    cur.execute('SELECT * FROM Item LEFT OUTER JOIN Employee ON Item.ClaimsE_ID = Employee.Employee_ID')
     columns = [desc[0] for desc in cur.description]
     result = cur.fetchall()
     cur.close()
@@ -35,6 +35,18 @@ def all_items():
 def claimed_items():
     cur = mysql.connection.cursor()
     cur.execute("""SELECT * FROM Item WHERE ClaimsE_ID = 002828141""")
+    columns = [desc[0] for desc in cur.description]
+    result = cur.fetchall()
+    cur.close()
+    return jsonify(tuple_to_dict(columns, result))
+
+# Get employee based on ID
+@app.route('/api/get-employee', methods=['GET'])
+def get_employee():
+    query = request.args.to_dict()
+    emp_id = query.get("employeeId")
+    cur = mysql.connection.cursor()
+    cur.execute("""SELECT * FROM Employee WHERE Employee_ID = %s;""", (emp_id,))
     columns = [desc[0] for desc in cur.description]
     result = cur.fetchall()
     cur.close()

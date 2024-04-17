@@ -22,14 +22,15 @@ function ClaimItemForm({ itemData, setModalIsOpen }) {
         if (!res.ok) {
           throw new Error("Employee does not exist");
         }
+
+        setModalIsOpen(false);
+        toast.success("Claim successful!");
+        queryClient.invalidateQueries({ queryKey: ["items"] });
       })
       .catch((err) => {
         toast.error(err.message);
+        return;
       });
-
-    setModalIsOpen(false);
-    toast.success("Claim successful!");
-    queryClient.invalidateQueries({ queryKey: ["items"] });
   };
 
   return (

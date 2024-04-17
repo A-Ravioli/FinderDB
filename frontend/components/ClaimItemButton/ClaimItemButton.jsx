@@ -5,6 +5,7 @@ import ClaimItemForm from "../ClaimItemForm/ClaimItemForm";
 
 function ClaimItemButton({ itemData }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  console.log(itemData);
 
   return (
     <Dialog.Root open={modalIsOpen} onOpenChange={setModalIsOpen}>

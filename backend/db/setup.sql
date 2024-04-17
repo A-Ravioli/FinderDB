@@ -13,5 +13,5 @@ INSERT INTO Employee (Employee_ID, FName, LName) VALUES ("002828141", 'Eric', 'I
 
 
 -- Add items
-INSERT INTO Item (ItemName, Status, Image, Description, DateFound, Location, PostE_ID) VALUES ('Keys Set', 'Unclaimed', 'keys.jpg', 'A set of keys with a superhero keychain, found in the cafeteria.', '2024-04-10', 'Cafeteria', "002828141"), ('Basketball', 'Unclaimed', 'basketball.jpg', 'A basketball found in the gym.', '2024-04-10', 'Gym', "002828141");
+INSERT INTO Item (ItemName, Status, Image, Description, DateFound, Location, PostE_ID) VALUES ('Keys Set', 'Unclaimed', 'keys.jpg', 'A set of keys with a superhero keychain, found in the cafeteria.', '2024-04-10', 'Cafeteria', "002828141"), ('Basketball', 'Unclaimed', 'basketball.jpg', 'A basketball found in the gym.', '2024-04-10', 'Gym', "002828141"), ('Ocean', 'Unclaimed', 'basketball.jpg', 'Ocean is my son.', '2024-04-10', 'Library', "002828141");
 
