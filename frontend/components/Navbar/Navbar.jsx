@@ -7,8 +7,10 @@ function Navbar() {
       <Link to="/" id={NavbarCSS["logo"]}>
         FinderDB
       </Link>
-      <p>File request</p>
-      <p>Report item</p>
+      <p>Report lost item</p>
+      <Link to="/report-item">
+        <p>Report found item</p>
+      </Link>
       <Link to="/my-claims">
         <p>My claims</p>
       </Link>
