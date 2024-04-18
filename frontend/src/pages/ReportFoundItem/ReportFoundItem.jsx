@@ -3,7 +3,7 @@ import * as Form from "@radix-ui/react-form";
 function ReportItem() {
   return (
     <>
-      <h1>Report item</h1>
+      <h1>Report found item</h1>
       <Form.Root>
         <Form.Field className="FormField" name="email">
           <div>
