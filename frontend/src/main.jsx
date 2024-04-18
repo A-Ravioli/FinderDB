@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import App from "./App";
 import MyClaims from "./pages/MyClaims/MyClaims";
 import ReportFoundItem from "./pages/ReportFoundItem/ReportFoundItem";
+import ReportLostItemForm from "./pages/ReportLostItemForm/ReportLostItemForm";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route index element={<Home />} />
           <Route path="/my-claims" element={<MyClaims />} />
           <Route path="/report-found-item" element={<ReportFoundItem />} />
+          <Route path="/report-lost-item" element={<ReportLostItemForm />} />
         </Route>
       </Routes>
     </BrowserRouter>
