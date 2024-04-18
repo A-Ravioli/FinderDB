@@ -71,8 +71,10 @@ def report_found_item():
     location = query.get("location")
 
     cur = mysql.connection.cursor()
-    cur.execute("""INSERT INTO Item (ItemID, ItemName, Status, Description, DateFound, Location, PostE_ID) VALUES (%s, %s, %s, %s, %s, %s, %s);""", 
-                (id, item_name, "Unclaimed", desc, date_found, location, emp_id))
+    cur.execute(
+        """INSERT INTO Item (ItemID, ItemName, Status, Description, DateFound, Location, PostE_ID) VALUES (%s, %s, %s, %s, %s, %s, %s);""",
+        (id, item_name, "Unclaimed", desc, date_found, location, emp_id),
+    )
     mysql.connection.commit()
     cur.close()
     return jsonify(id)
@@ -151,6 +153,7 @@ def request_lost_item():
     mysql.connection.commit()
     cur.close()
     return jsonify("asdf")
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)
