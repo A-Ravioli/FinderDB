@@ -10,7 +10,7 @@ function Home() {
     <div id={HomeCSS["items-container"]}>
       <h1>Unclaimed items</h1>
       {items?.map((itemData) => (
-        <ItemCard itemData={itemData} key={itemData.itemid}/>
+        <ItemCard itemData={itemData} key={itemData.itemid} />
       ))}
     </div>
   );

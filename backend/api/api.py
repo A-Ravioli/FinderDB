@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, Response
 from flask_mysqldb import MySQL
-import json
+import uuid
 
 app = Flask(__name__)
 app.config["MYSQL_HOST"] = "db"
@@ -58,15 +58,19 @@ def get_employee():
     cur.close()
     return jsonify(tuple_to_dict(columns, result))
 
-# Report a found item
+# Report a found item. Returns the item's uuid
 @app.route('/api/report-found-item', methods=['POST'])
 def report_found_item():
     query = request.args.to_dict()
+    item_name = query.get("name")
+    date_found = query.get("dateFound")
     emp_id = query.get("employeeId")
     desc = query.get("description")
+    location = query.get("location")
 
     cur = mysql.connection.cursor()
-    cur.execute("""INSERT INTO Item (name, description, location, image) VALUES (%s, %s, %s, %s);""", (emp_id, ))
+    cur.execute("""INSERT INTO Item (ItemName, Status, Description, DateFound, Location, PostE_ID) VALUES (%s, %s, %s, %s, %s, %s, %s);""", 
+                (item_name, "Claimed", desc, date_found, location, emp_id))
     columns = [desc[0] for desc in cur.description]
     result = cur.fetchall()
     cur.close()
