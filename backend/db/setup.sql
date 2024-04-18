@@ -32,13 +32,13 @@ INSERT INTO
         ItemID, ItemName, Status, Description, DateFound, Location, PostE_ID
     )
 VALUES (
-        "1234123412341234", 'Keys Set', 'Unclaimed', 'A set of keys with a superhero keychain, found in the cafeteria.', '2024-04-10', 'Cafeteria', "002828141"
+        "1234123412341234", 'Keys Set', 'Unclaimed', 'A set of keys with a superhero keychain, found in the cafeteria.', '2024-04-10', 'Cafeteria', "002818341"
     ),
     (
-        "213891238971293874328", 'Basketball', 'Unclaimed', 'A basketball found in the gym.', '2024-04-10', 'Gym', "002828141"
+        "213891238971293874328", 'Basketball', 'Unclaimed', 'A basketball found in the gym.', '2024-04-10', 'Gym', "002818341"
     ),
     (
-        "120934891234872438782", 'Ocean', 'Unclaimed', 'Ocean is my son.', '2024-04-10', 'Library', "002828141"
+        "120934891234872438782", 'Ocean', 'Unclaimed', 'Ocean is my son.', '2024-04-10', 'Library', "002818341"
     );
 
 -- Add LostRequst

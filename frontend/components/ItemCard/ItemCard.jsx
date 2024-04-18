@@ -2,6 +2,7 @@ import ClaimItemButton from "../ClaimItemButton/ClaimItemButton";
 import ItemCardCSS from "./ItemCard.module.css";
 
 function ItemCard({ itemData }) {
+  console.log(itemData);
   return (
     <div className={ItemCardCSS["card-container"]}>
       <div className={ItemCardCSS["item-info-container"]}>
@@ -16,7 +17,9 @@ function ItemCard({ itemData }) {
         <p>Location: {itemData.location}</p>
         <p>Date found: {itemData.datefound}</p>
 
-        <ClaimItemButton itemData={itemData} />
+        {itemData.poste_id != "002828141" && (
+          <ClaimItemButton itemData={itemData} />
+        )}
       </div>
       <img
         src="https://i.kym-cdn.com/entries/icons/facebook/000/048/633/Screenshot_2024-02-27_at_1.49.23_PM.jpg"
