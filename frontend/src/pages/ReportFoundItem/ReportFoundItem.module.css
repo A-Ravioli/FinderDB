@@ -1,0 +1,22 @@
+.FormField {
+  display: grid;
+  margin-bottom: 10px;
+}
+
+.FormLabel {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 35px;
+}
+
+.FormMessage {
+  font-size: 13px;
+  color: white;
+  opacity: 0.8;
+}
+
+.FormMessage {
+  font-size: 13px;
+  color: red;
+  margin-left: 10px;
+}

@@ -13,6 +13,9 @@ function ItemCard({ itemData }) {
           </p>
         )}
         <p>Description: {itemData.description}</p>
+        <p>Location: {itemData.location}</p>
+        <p>Date found: {itemData.datefound}</p>
+
         <ClaimItemButton itemData={itemData} />
       </div>
       <img

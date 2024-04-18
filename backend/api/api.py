@@ -52,6 +52,21 @@ def get_employee():
     cur.close()
     return jsonify(tuple_to_dict(columns, result))
 
+# Report a found item
+@app.route('/api/report-found-item', methods=['POST'])
+def get_employee():
+    query = request.args.to_dict()
+    emp_id = query.get("employeeId")
+    desc = query.get("description")
+
+    cur = mysql.connection.cursor()
+    cur.execute("""INSERT INTO Item (name, description, location, image) VALUES (%s, %s, %s, %s);""", (emp_id, ))
+    columns = [desc[0] for desc in cur.description]
+    result = cur.fetchall()
+    cur.close()
+    return jsonify(tuple_to_dict(columns, result))
+
+
 # Updates item status and id of employee who claimed it
 @app.route('/api/claim-item', methods=['PATCH'])
 def claim_item():

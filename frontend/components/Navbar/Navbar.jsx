@@ -8,7 +8,7 @@ function Navbar() {
         FinderDB
       </Link>
       <p>Report lost item</p>
-      <Link to="/report-item">
+      <Link to="/report-found-item">
         <p>Report found item</p>
       </Link>
       <Link to="/my-claims">
