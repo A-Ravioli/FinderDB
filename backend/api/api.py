@@ -62,6 +62,7 @@ def get_employee():
 @app.route('/api/report-found-item', methods=['POST'])
 def report_found_item():
     query = request.args.to_dict()
+    id = uuid.uuid4()
     item_name = query.get("name")
     date_found = query.get("dateFound")
     emp_id = query.get("employeeId")
@@ -69,12 +70,11 @@ def report_found_item():
     location = query.get("location")
 
     cur = mysql.connection.cursor()
-    cur.execute("""INSERT INTO Item (ItemName, Status, Description, DateFound, Location, PostE_ID) VALUES (%s, %s, %s, %s, %s, %s, %s);""", 
-                (item_name, "Claimed", desc, date_found, location, emp_id))
-    columns = [desc[0] for desc in cur.description]
-    result = cur.fetchall()
+    cur.execute("""INSERT INTO Item (ItemID, ItemName, Status, Description, DateFound, Location, PostE_ID) VALUES (%s, %s, %s, %s, %s, %s, %s);""", 
+                (id, item_name, "Unclaimed", desc, date_found, location, emp_id))
+    mysql.connection.commit()
     cur.close()
-    return jsonify(tuple_to_dict(columns, result))
+    return jsonify(id)
 
 
 # Updates item status and id of employee who claimed it

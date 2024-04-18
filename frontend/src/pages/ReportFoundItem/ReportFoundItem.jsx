@@ -3,9 +3,9 @@ import { useState } from "react";
 import ReportFoundItemCSS from "./ReportFoundItem.module.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import uploadImage from "../../../data/uploadImage";
 
 function ReportItem() {
-  const [img, setImg] = useState();
   const navigate = useNavigate();
 
   const submitReport = async (e) => {
@@ -28,8 +28,8 @@ function ReportItem() {
         throw new Error("Something went wrong, check your inputs");
       }
 
-      // const id = await res.json();
-      // await uploadImage(data.image, id);
+      const id = await res.json();
+      await uploadImage(data.image, id);
 
       toast.success("Report successful!");
       navigate("/");
@@ -118,14 +118,7 @@ function ReportItem() {
             Please add the date the item was found
           </Form.Message>
           <Form.Control asChild>
-            <input
-              className="Input"
-              type="date"
-              onChange={(e) => {
-                setImg(e.target.value);
-              }}
-              required
-            />
+            <input className="Input" type="date" required />
           </Form.Control>
         </Form.Field>
         <Form.Field className={ReportFoundItemCSS["FormField"]} name="image">
