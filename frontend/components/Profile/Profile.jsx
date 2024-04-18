@@ -22,7 +22,6 @@ const ProfilePage = () => {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      // Handle form submission, e.g., send data to backend or update state
       console.log({ name, aboutMe, picture });
     };
   

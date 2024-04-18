@@ -1,29 +1,22 @@
-.reportForm {
-    display: flex;
-    flex-direction: column;
-    max-width: 300px;
-    margin: auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.reportForm input,
-.reportForm textarea {
+.FormField {
+    display: grid;
     margin-bottom: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
 }
 
-.reportForm button {
-    background-color: #007bff;
+.FormLabel {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 35px;
+}
+
+.FormMessage {
+    font-size: 13px;
     color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    opacity: 0.8;
 }
 
-.reportForm button:hover {
-    background-color: #0056b3;
+.FormMessage {
+    font-size: 13px;
+    color: red;
+    margin-left: 10px;
 }
