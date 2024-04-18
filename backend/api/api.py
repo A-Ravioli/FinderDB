@@ -152,28 +152,6 @@ def request_lost_item():
     cur.close()
     return jsonify("asdf")
 
-
-# Report a found item. Returns the item's uuid
-@app.route("/api/report-found-item", methods=["POST"])
-def report_found_item():
-    query = request.args.to_dict()
-    item_name = query.get("name")
-    date_found = query.get("dateFound")
-    emp_id = query.get("employeeId")
-    desc = query.get("description")
-    location = query.get("location")
-
-    cur = mysql.connection.cursor()
-    cur.execute(
-        """INSERT INTO Item (ItemName, Status, Description, DateFound, Location, PostE_ID) VALUES (%s, %s, %s, %s, %s, %s, %s);""",
-        (item_name, "Claimed", desc, date_found, location, emp_id),
-    )
-    columns = [desc[0] for desc in cur.description]
-    result = cur.fetchall()
-    cur.close()
-    return jsonify(tuple_to_dict(columns, result))
-
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)
 
