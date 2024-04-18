@@ -60,7 +60,7 @@ def get_employee():
 
 # Report a found item
 @app.route('/api/report-found-item', methods=['POST'])
-def get_employee():
+def report_found_item():
     query = request.args.to_dict()
     emp_id = query.get("employeeId")
     desc = query.get("description")
