@@ -98,7 +98,7 @@ function ReportItem() {
             className={ReportFoundItemCSS["FormMessage"]}
             match="valueMissing"
           >
-            Please enter the item's description
+            Please enter the item description
           </Form.Message>
           <Form.Control asChild>
             <textarea className="Input" type="text" required />

@@ -40,36 +40,41 @@ function ReportLostItemForm() {
     };
 
     return (
-        <Form.Root className="FormRoot">
-            <Form.Field className="FormField" name="email">
-            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
-                <Form.Label className="FormLabel">Email</Form.Label>
-                <Form.Message className="FormMessage" match="valueMissing">
-                Please enter your email
-                </Form.Message>
-                <Form.Message className="FormMessage" match="typeMismatch">
-                Please provide a valid email
-                </Form.Message>
-            </div>
-            <Form.Control asChild>
-                <input className="Input" type="email" required />
-            </Form.Control>
+        <Form.Root className="FormRoot" onSubmit={handleSubmit}>
+            <Form.Field className="FormField" name="Requester_ID">
+                <Form.Label className="FormLabel">Requester ID</Form.Label>
+                <Form.Control asChild>
+                    <input className="Input" type="text" value={formData.Requester_ID} onChange={handleChange} name="Requester_ID" required />
+                </Form.Control>
             </Form.Field>
-            <Form.Field className="FormField" name="question">
-            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
-                <Form.Label className="FormLabel">Question</Form.Label>
-                <Form.Message className="FormMessage" match="valueMissing">
-                Please enter a question
-                </Form.Message>
-            </div>
-            <Form.Control asChild>
-                <textarea className="Textarea" required />
-            </Form.Control>
+            <Form.Field className="FormField" name="ItemName">
+                <Form.Label className="FormLabel">Item Name</Form.Label>
+                <Form.Control asChild>
+                    <input className="Input" type="text" value={formData.ItemName} onChange={handleChange} name="ItemName" required />
+                </Form.Control>
+            </Form.Field>
+            <Form.Field className="FormField" name="Description">
+                <Form.Label className="FormLabel">Description</Form.Label>
+                <Form.Control asChild>
+                    <textarea className="Textarea" value={formData.Description} onChange={handleChange} name="Description" required />
+                </Form.Control>
+            </Form.Field>
+            <Form.Field className="FormField" name="DateLost">
+                <Form.Label className="FormLabel">Date Lost</Form.Label>
+                <Form.Control asChild>
+                    <input className="Input" type="date" value={formData.DateLost} onChange={handleChange} name="DateLost" required />
+                </Form.Control>
+            </Form.Field>
+            <Form.Field className="FormField" name="Location">
+                <Form.Label className="FormLabel">Location</Form.Label>
+                <Form.Control asChild>
+                    <input className="Input" type="text" value={formData.Location} onChange={handleChange} name="Location" required />
+                </Form.Control>
             </Form.Field>
             <Form.Submit asChild>
-            <button className="Button" style={{ marginTop: 10 }}>
-                Post question
-            </button>
+                <button className="Button" style={{ marginTop: 10 }}>
+                    Report Lost Item
+                </button>
             </Form.Submit>
         </Form.Root>
     );
