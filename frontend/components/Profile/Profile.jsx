@@ -15,6 +15,7 @@ const ProfilePage = () => {
       setAboutMe(e.target.value);
     };
   
+  
     const handlePictureChange = (e) => {
       const file = e.target.files[0];
       setPicture(file);
