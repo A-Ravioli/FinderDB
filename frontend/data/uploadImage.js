@@ -1,17 +1,13 @@
-const uploadImage = async (img, itemId) => {
-  const renamedFile = new File([img], itemId, { type: "img/png" });
+const uploadImage = async (formData, itemId) => {
   const res = await fetch(
-    `https://storage.googleapis.com/upload/storage/v1/b/finderdb/o/?uploadType=media&name=${itemId}`,
+    `https://api.cloudinary.com/v1_1/ddagc2zs9/auto/upload`,
     {
       method: "POST",
-      headers: {
-        Authorization: "Bearer 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",
-      },
-      body: renamedFile,
+      body: formData,
     }
   );
 
-  return res.json();
+  return await res.json();
 };
 
 export default uploadImage;

@@ -5,31 +5,38 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import uploadImage from "../../../data/uploadImage";
 
-function ReportItem() {
+function ReportFoundItem() {
   const navigate = useNavigate();
 
   const submitReport = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
 
-    const params = new URLSearchParams({
-      dateFound: data.dateFound,
-      description: data.description,
-      employeeId: data.employeeId,
-      name: data.name,
-      location: data.location,
-    });
-
     try {
+      const formData = new FormData();
+
+      formData.append("file", data.image);
+      formData.append("api_key", "661321119737593");
+      formData.append("timestamp", Date.now());
+      formData.append("upload_preset", "ggjghr8y");
+      formData.append("folder", "items");
+
+      const imageData = await uploadImage(formData, "asdf");
+      console.log(imageData.secure_url);
+      const params = new URLSearchParams({
+        dateFound: data.dateFound,
+        description: data.description,
+        employeeId: data.employeeId,
+        name: data.name,
+        location: data.location,
+        image: imageData.secure_url,
+      });
       const res = await fetch(`/api/report-found-item?` + params, {
         method: "POST",
       });
       if (!res.ok) {
         throw new Error("Something went wrong, check your inputs");
       }
-
-      const id = await res.json();
-      await uploadImage(data.image, id);
 
       toast.success("Report successful!");
       navigate("/");
@@ -134,14 +141,7 @@ function ReportItem() {
             </Form.Message>
           </div>
           <Form.Control asChild>
-            <input
-              className="Input"
-              type="file"
-              onChange={(e) => {
-                setImg(e.target.value);
-              }}
-              required
-            />
+            <input className="Input" type="file" required />
           </Form.Control>
         </Form.Field>
         <Form.Submit asChild>
@@ -154,4 +154,4 @@ function ReportItem() {
   );
 }
 
-export default ReportItem;
+export default ReportFoundItem;

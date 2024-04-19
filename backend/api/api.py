@@ -1,6 +1,14 @@
 from flask import Flask, jsonify, request, Response
 from flask_mysqldb import MySQL
 import uuid
+import cloudinary
+import cloudinary.uploader
+
+cloudinary.config( 
+  cloud_name = "ddagc2zs9", 
+  api_key = "661321119737593", 
+  api_secret = "***************************" 
+)
 
 app = Flask(__name__)
 app.config["MYSQL_HOST"] = "db"
@@ -9,7 +17,6 @@ app.config["MYSQL_PASSWORD"] = "root"
 app.config["MYSQL_DB"] = "FinderDB"
 
 mysql = MySQL(app)
-
 
 # Helper function to convert tuple results to dictionaries
 def tuple_to_dict(columns, data):
@@ -69,10 +76,11 @@ def report_found_item():
     emp_id = query.get("employeeId")
     desc = query.get("description")
     location = query.get("location")
+    image = query.get("image")
 
     cur = mysql.connection.cursor()
-    cur.execute("""INSERT INTO Item (ItemID, ItemName, Status, Description, DateFound, Location, PostE_ID) VALUES (%s, %s, %s, %s, %s, %s, %s);""", 
-                (id, item_name, "Unclaimed", desc, date_found, location, emp_id))
+    cur.execute("""INSERT INTO Item (ItemID, ItemName, Status, Image, Description, DateFound, Location, PostE_ID) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);""", 
+                (id, item_name, "Unclaimed", image, desc, date_found, location, emp_id))
     mysql.connection.commit()
     cur.close()
     return jsonify(id)
