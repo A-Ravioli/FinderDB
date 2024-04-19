@@ -166,6 +166,10 @@ def request_lost_item():
     cur.close()
     return jsonify("asdf")
 
+# Request lost item
+@app.route("/api/test", methods=["GET"])
+def test():
+    return jsonify("LETS GO")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)

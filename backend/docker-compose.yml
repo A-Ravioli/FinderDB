@@ -1,12 +1,11 @@
 services:
   api:
-    build: ./api/
-    command: sh -c "python3 api.py"
     ports:
       - "8000:8000"
+    build: ./api
+    volumes: ["./api:/app"]
     depends_on:
       - db
-
   db:
     restart: always
     build: ./db/
