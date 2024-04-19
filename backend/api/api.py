@@ -1,14 +1,6 @@
 from flask import Flask, jsonify, request, Response
 from flask_mysqldb import MySQL
 import uuid
-import cloudinary
-import cloudinary.uploader
-
-cloudinary.config( 
-  cloud_name = "ddagc2zs9", 
-  api_key = "661321119737593", 
-  api_secret = "***************************" 
-)
 
 app = Flask(__name__)
 app.config["MYSQL_HOST"] = "db"
