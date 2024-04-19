@@ -1,12 +1,13 @@
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { Cloudinary } from "@cloudinary/url-gen";
+
 
 import Navbar from "../components/Navbar/Navbar";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { Cloudinary } from "@cloudinary/url-gen";
 
 const queryClient = new QueryClient();
 
