@@ -11,6 +11,9 @@ export default defineConfig({
         secure: false,
       },
     },
+    optimizeDeps: {
+      exclude: ["react-icons"],
+    },
   },
   plugins: [react()],
 });

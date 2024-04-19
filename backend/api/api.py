@@ -144,16 +144,22 @@ def delete_item(id):
 @app.route("/api/request-lost-item", methods=["POST"])
 def request_lost_item():
     cur = mysql.connection.cursor()
-    data = request.get_json()
+    query = request.args.to_dict()
+    req_id = query.get("requesterID")
+    item_name = query.get("itemName")
+    desc = query.get("description")
+    date_lost = query.get("dateLost")
+    location = query.get("location")
+
     cur.execute(
         "INSERT INTO LostRequest (Requester_ID, ItemName, Description, DateLost, Location, Status) VALUES (%s, %s, %s, %s, %s, %s)",
         (
-            data["RequesterID"],
-            data["ItemName"],
-            data["Description"],
-            data["DateLost"],
-            data["Location"],
-            data["Status"],
+            req_id,
+            item_name,
+            desc,
+            date_lost,
+            location,
+            "Unfulfilled",
         ),
     )
     mysql.connection.commit()

@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav id={NavbarCSS["nav-container"]}>
       <Link to="/" id={NavbarCSS["logo"]}>
-        Finder keepers losers weepers
+        FinderDB
       </Link>
       <Link to="/report-lost-item">
         <p>Report lost item</p>
@@ -15,9 +15,6 @@ function Navbar() {
       </Link>
       <Link to="/my-claims">
         <p>My claims</p>
-      </Link>
-      <Link to="/profile">
-        <p>Profile</p>
       </Link>
     </nav>
   );

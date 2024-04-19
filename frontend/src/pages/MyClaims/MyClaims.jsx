@@ -14,7 +14,7 @@ function MyClaims() {
       <h1>Claimed items</h1>
       {items?.length !== 0 ? (
         <div>
-          {items.map((item) => {
+          {items?.map((item) => {
             return <ItemCard itemData={item} />;
           })}
         </div>

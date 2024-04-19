@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as Form from "@radix-ui/react-form";
 import { useNavigate } from "react-router-dom";
-import ReportLostItemFormCSS from "./ReportLostItemForm.module.css";
+import RequestLostItemForm from "./RequestLostItemForm.module.css";
 import { toast } from "react-toastify";
 
 function ReportLostItemForm() {
@@ -11,20 +11,23 @@ function ReportLostItemForm() {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
 
-    console.log(data);
-
     const params = new URLSearchParams({
-      RequesterID: data.Requester_ID,
-      ItemName: data.ItemName,
-      Description: data.Description,
-      DateLost: data.DateLost,
-      Location: data.Location,
-      Status: "Unclaimed",
+      requesterID: data.Requester_ID,
+      itemName: data.ItemName,
+      description: data.Description,
+      dateLost: data.DateLost,
+      location: data.Location,
     });
+
+    console.log(params.toString());
 
     try {
       const res = await fetch(`/api/request-lost-item?` + params, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
       });
       if (!res.ok) {
         throw new Error("Something went wrong, check your inputs");
@@ -43,26 +46,21 @@ function ReportLostItemForm() {
       <p>Please fill out the form below to report a lost item.</p>
       <Form.Root className="FormRoot" onSubmit={submitReport}>
         <Form.Field
-          className={ReportLostItemFormCSS["FormField"]}
+          className={RequestLostItemForm["FormField"]}
           name="Requester_ID"
         >
-          <Form.Label className={ReportLostItemFormCSS["FormLabel"]}>
+          <Form.Label className={RequestLostItemForm["FormLabel"]}>
             Requester ID
           </Form.Label>
           <Form.Control asChild>
-            <input
-              className="Input"
-              type="number"
-              name="Requester_ID"
-              required
-            />
+            <input className="Input" type="text" name="Requester_ID" required />
           </Form.Control>
         </Form.Field>
         <Form.Field
-          className={ReportLostItemFormCSS["FormField"]}
+          className={RequestLostItemForm["FormField"]}
           name="ItemName"
         >
-          <Form.Label className={ReportLostItemFormCSS["FormLabel"]}>
+          <Form.Label className={RequestLostItemForm["FormLabel"]}>
             Item Name
           </Form.Label>
           <Form.Control asChild>
@@ -70,10 +68,10 @@ function ReportLostItemForm() {
           </Form.Control>
         </Form.Field>
         <Form.Field
-          className={ReportLostItemFormCSS["FormField"]}
+          className={RequestLostItemForm["FormField"]}
           name="Description"
         >
-          <Form.Label className={ReportLostItemFormCSS["FormLabel"]}>
+          <Form.Label className={RequestLostItemForm["FormLabel"]}>
             Description
           </Form.Label>
           <Form.Control asChild>
@@ -81,10 +79,10 @@ function ReportLostItemForm() {
           </Form.Control>
         </Form.Field>
         <Form.Field
-          className={ReportLostItemFormCSS["FormField"]}
+          className={RequestLostItemForm["FormField"]}
           name="DateLost"
         >
-          <Form.Label className={ReportLostItemFormCSS["FormLabel"]}>
+          <Form.Label className={RequestLostItemForm["FormLabel"]}>
             Date Lost
           </Form.Label>
           <Form.Control asChild>
@@ -92,10 +90,10 @@ function ReportLostItemForm() {
           </Form.Control>
         </Form.Field>
         <Form.Field
-          className={ReportLostItemFormCSS["FormField"]}
+          className={RequestLostItemForm["FormField"]}
           name="Location"
         >
-          <Form.Label className={ReportLostItemFormCSS["FormLabel"]}>
+          <Form.Label className={RequestLostItemForm["FormLabel"]}>
             Location
           </Form.Label>
           <Form.Control asChild>

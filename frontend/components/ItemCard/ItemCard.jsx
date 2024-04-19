@@ -19,6 +19,7 @@ function ItemCard({ itemData }) {
         {itemData.poste_id != "002828141" && (
           <ClaimItemButton itemData={itemData} />
         )}
+        {itemData.poste_id === "002828141" && "X"}
       </div>
       <img
         src={
