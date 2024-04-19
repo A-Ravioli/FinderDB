@@ -12,6 +12,7 @@ function MyClaims() {
   return (
     <div id={MyClaimsCSS["items-container"]}>
       <h1>Claimed items</h1>
+
       {items?.length !== 0 ? (
         <div>
           {items?.map((item) => {

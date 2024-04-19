@@ -1,19 +1,25 @@
-#nav-container {
+.nav-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 var(--primary-horizontal-padding);
   height: 80px;
   border-bottom: var(--primary-border);
 }
 
-#nav-container > *:not(:first-child) {
-  margin-left: 40px;
+.nav-links {
+  display: flex;
+  align-items: center;
 }
 
-#nav-container > * {
+.nav-links > * {
   cursor: pointer;
   text-decoration: none;
   color: black;
+}
+
+.nav-links > *:not(:first-child) {
+  margin-left: 40px;
 }
 
 #logo {

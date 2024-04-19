@@ -2,16 +2,12 @@ import HomeCSS from "./Home.module.css";
 import ItemCard from "../../../components/ItemCard/ItemCard";
 import { useQuery } from "react-query";
 import getItems from "../../../data/getItems";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const { data: items } = useQuery({ queryKey: ["items"], queryFn: getItems });
-
   return (
     <div id={HomeCSS["items-container"]}>
-      <h1>Unclaimed items</h1>
-      {items?.map((itemData) => (
-        <ItemCard itemData={itemData} key={itemData.itemid} />
-      ))}
+      <h1>Search</h1>
     </div>
   );
 }

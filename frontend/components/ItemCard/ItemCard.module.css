@@ -4,6 +4,7 @@
   padding: 20px;
   border: var(--primary-border);
   border-radius: 12px;
+  width: 100%;
 }
 
 .item-info-container > *:not(:first-child) {

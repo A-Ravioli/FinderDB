@@ -73,14 +73,13 @@ def report_found_item():
     id = uuid.uuid4()
     item_name = query.get("name")
     date_found = query.get("dateFound")
-    emp_id = query.get("employeeId")
     desc = query.get("description")
     location = query.get("location")
     image = query.get("image")
 
     cur = mysql.connection.cursor()
     cur.execute("""INSERT INTO Item (ItemID, ItemName, Status, Image, Description, DateFound, Location, PostE_ID) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);""", 
-                (id, item_name, "Unclaimed", image, desc, date_found, location, emp_id))
+                (id, item_name, "Unclaimed", image, desc, date_found, location, "002828141"))
     mysql.connection.commit()
     cur.close()
     return jsonify(id)
@@ -101,43 +100,6 @@ def claim_item():
     mysql.connection.commit()
     return ("Item updated", 200)
 
-
-# Add a new item
-@app.route("/api/items", methods=["POST"])
-def add_item():
-    data = request.get_json()
-    cur = mysql.connection.cursor()
-    cur.execute(
-        "INSERT INTO Item (name, description, location, image) VALUES (%s, %s, %s, %s)",
-        (data["name"], data["description"], data["location"], data["image"]),
-    )
-    mysql.connection.commit()
-    cur.close()
-    return ("Item added", 201)
-
-
-# Update an item
-@app.route("/api/items/<int:id>", methods=["PUT"])
-def update_item(id):
-    data = request.get_json()
-    cur = mysql.connection.cursor()
-    cur.execute(
-        "UPDATE Item SET name=%s, description=%s, location=%s, image=%s WHERE id=%s",
-        (data["name"], data["description"], data["location"], data["image"], id),
-    )
-    mysql.connection.commit()
-    cur.close()
-    return ("Item updated", 200)
-
-
-# Delete an item
-@app.route("/api/items/<int:id>", methods=["DELETE"])
-def delete_item(id):
-    cur = mysql.connection.cursor()
-    cur.execute("DELETE FROM Item WHERE id = %s", (id,))
-    mysql.connection.commit()
-    cur.close()
-    return ("Item deleted", 200)
 
 
 # Request lost item
@@ -164,12 +126,19 @@ def request_lost_item():
     )
     mysql.connection.commit()
     cur.close()
-    return jsonify("asdf")
+    return jsonify("Success", 200)
 
-# Request lost item
-@app.route("/api/test", methods=["GET"])
-def test():
-    return jsonify("LETS GO")
+# Returns all requests for lost items
+@app.route("/api/all-requests", methods=["GET"])
+def all_requests():
+    cur = mysql.connection.cursor()
+    cur.execute(
+        "SELECT * FROM LostRequests"
+    )
+    columns = [desc[0] for desc in cur.description]
+    result = cur.fetchall()
+    cur.close()
+    return jsonify(tuple_to_dict(columns, result))
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)

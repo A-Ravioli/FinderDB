@@ -43,19 +43,7 @@ function ReportLostItemForm() {
   return (
     <>
       <h1>Report Lost Item</h1>
-      <p>Please fill out the form below to report a lost item.</p>
       <Form.Root className="FormRoot" onSubmit={submitReport}>
-        <Form.Field
-          className={RequestLostItemForm["FormField"]}
-          name="Requester_ID"
-        >
-          <Form.Label className={RequestLostItemForm["FormLabel"]}>
-            Requester ID
-          </Form.Label>
-          <Form.Control asChild>
-            <input className="Input" type="text" name="Requester_ID" required />
-          </Form.Control>
-        </Form.Field>
         <Form.Field
           className={RequestLostItemForm["FormField"]}
           name="ItemName"

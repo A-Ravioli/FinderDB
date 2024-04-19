@@ -26,7 +26,6 @@ function ReportFoundItem() {
       const params = new URLSearchParams({
         dateFound: data.dateFound,
         description: data.description,
-        employeeId: data.employeeId,
         name: data.name,
         location: data.location,
         image: imageData.secure_url,
@@ -61,23 +60,6 @@ function ReportFoundItem() {
           </Form.Message>
           <Form.Control asChild>
             <input className="Input" type="text" required />
-          </Form.Control>
-        </Form.Field>
-        <Form.Field
-          className={ReportFoundItemCSS["FormField"]}
-          name="employeeId"
-        >
-          <Form.Label className={ReportFoundItemCSS["FormLabel"]}>
-            Employee ID
-          </Form.Label>
-          <Form.Message
-            className={ReportFoundItemCSS["FormMessage"]}
-            match="valueMissing"
-          >
-            Please enter your employee ID
-          </Form.Message>
-          <Form.Control asChild>
-            <input className="Input" type="number" required />
           </Form.Control>
         </Form.Field>
         <Form.Field className={ReportFoundItemCSS["FormField"]} name="location">
