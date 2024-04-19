@@ -1,19 +1,10 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import * as Form from '@radix-ui/react-form';
 import { useNavigate } from "react-router-dom";
 import ReportLostItemFormCSS from './ReportLostItemForm.module.css';
 import { toast } from "react-toastify";
 
 function ReportLostItemForm() {
-    // const [formData, setFormData] = useState({
-    //     Requester_ID: '',
-    //     ItemName: '',
-    //     Description: '',
-    //     DateLost: '',
-    //     Location: '',
-    //     Status: 'Unclaimed'
-    // });
-
     const navigate = useNavigate();
   
     const submitReport = async (e) => {
