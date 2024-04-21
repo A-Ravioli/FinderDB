@@ -1,17 +1,22 @@
 import * as Form from "@radix-ui/react-form";
+import { useContext } from "react";
+import { useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import UserContext from "../../context/UserContext";
 import RequestLostItemForm from "./RequestLostItemForm.module.css";
 
 function ReportLostItemForm() {
   const navigate = useNavigate();
+  const { user } = useContext(UserContext);
+  const queryClient = useQueryClient();
 
   const submitReport = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
 
     const params = new URLSearchParams({
-      requesterID: data.Requester_ID,
+      requesterID: user.id,
       itemName: data.ItemName,
       description: data.Description,
       dateLost: data.DateLost,
@@ -30,8 +35,9 @@ function ReportLostItemForm() {
         throw new Error("Something went wrong, check your inputs");
       }
 
+      queryClient.invalidateQueries("requests");
       toast.success("Report successful!");
-      navigate("/");
+      navigate("/lost-item-requests");
     } catch (err) {
       toast.error(err.message);
     }

@@ -40,7 +40,7 @@ function ReportFoundItem() {
       }
 
       toast.success("Report successful!");
-      navigate("/");
+      navigate("/all-unclaimed");
     } catch (err) {
       toast.error(err.message);
     }

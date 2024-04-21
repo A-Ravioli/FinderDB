@@ -16,7 +16,7 @@ function ClaimItemForm({ itemData, setModalIsOpen }) {
     });
 
     await fetch(`/api/claim-item?` + params, {
-      method: "PATCH",
+      method: "PUT",
     })
       .then((res) => {
         if (!res.ok) {

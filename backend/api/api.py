@@ -59,20 +59,6 @@ def claimed_items():
     cur.close()
     return jsonify(tuple_to_dict(columns, result))
 
-
-# Get employee based on ID
-@app.route("/api/get-employee", methods=["GET"])
-def get_employee():
-    query = request.args.to_dict()
-    emp_id = query.get("employeeId")
-    cur = mysql.connection.cursor()
-    cur.execute("""SELECT * FROM Employee WHERE Employee_ID = %s;""", (emp_id,))
-    columns = [desc[0] for desc in cur.description]
-    result = cur.fetchall()
-    cur.close()
-    return jsonify(tuple_to_dict(columns, result))
-
-
 # Report a found item. Returns the item's uuid
 @app.route("/api/report-found-item", methods=["POST"])
 def report_found_item():
@@ -95,7 +81,7 @@ def report_found_item():
 
 
 # Updates item status and id of employee who claimed it
-@app.route("/api/claim-item", methods=["PATCH"])
+@app.route("/api/claim-item", methods=["PUT"])
 def claim_item():
     query = request.args.to_dict()
     emp_id = query.get("employeeId")

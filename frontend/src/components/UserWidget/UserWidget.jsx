@@ -6,8 +6,8 @@ import UserWidgetCSS from "./UserWidget.module.css";
 function UserWidget() {
   const { user, setUser } = useContext(UserContext);
   const eric = { name: "Eric", id: "002828141" };
-  const sally = { name: "Sally", id: "4004004004" };
-  const kendrick = { name: "Kendrick", id: "666666666" };
+  const sally = { name: "Sally", id: "4204204204" };
+  const kendrick = { name: "Kendrick", id: "696969696" };
 
   return (
     <DropdownMenu.Root>
