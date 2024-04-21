@@ -10,6 +10,7 @@ app.config["MYSQL_DB"] = "FinderDB"
 
 mysql = MySQL(app)
 
+
 # Helper function to convert tuple results to dictionaries
 def tuple_to_dict(columns, data):
     result = []
@@ -70,8 +71,10 @@ def report_found_item():
     image = query.get("image")
 
     cur = mysql.connection.cursor()
-    cur.execute("""INSERT INTO Item (ItemID, ItemName, Status, Image, Description, DateFound, Location, PostE_ID) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);""", 
-                (id, item_name, "Unclaimed", image, desc, date_found, location, "002828141"))
+    cur.execute(
+        """INSERT INTO Item (ItemID, ItemName, Status, Image, Description, DateFound, Location, PostE_ID) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);""",
+        (id, item_name, "Unclaimed", image, desc, date_found, location, "002828141"),
+    )
     mysql.connection.commit()
     cur.close()
     return jsonify(id)
@@ -91,7 +94,6 @@ def claim_item():
     cur.close()
     mysql.connection.commit()
     return ("Item updated", 200)
-
 
 
 # Request lost item
@@ -120,22 +122,33 @@ def request_lost_item():
     cur.close()
     return jsonify("Success", 200)
 
-# Returns all requests for lost items
-@app.route("/api/all-requests", methods=["GET"])
-def all_requests():
+
+# Searches the database for an item with title or description containing the query
+@app.route("/api/search", methods=["GET"])
+def search():
+    query = request.args.to_dict()
+    search_query = query.get("query")
     cur = mysql.connection.cursor()
     cur.execute(
-        "SELECT * FROM LostRequests"
+        "SELECT * FROM Item WHERE ItemName LIKE %s OR Description LIKE %s",
+        ("%" + search_query + "%", "%" + search_query + "%"),
     )
     columns = [desc[0] for desc in cur.description]
     result = cur.fetchall()
     cur.close()
     return jsonify(tuple_to_dict(columns, result))
 
+
+# Returns all requests for lost items
+@app.route("/api/all-requests", methods=["GET"])
+def all_requests():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM LostRequests")
+    columns = [desc[0] for desc in cur.description]
+    result = cur.fetchall()
+    cur.close()
+    return jsonify(tuple_to_dict(columns, result))
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)
-
-
-# SELECT * FROM Item
-# WHERE ItemName LIKE '%Search%'
-# ORDER BY ItemName ASC;
