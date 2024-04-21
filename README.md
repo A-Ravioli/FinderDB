@@ -2,6 +2,10 @@
 
 FinderDB is an online lost and found catalog designed to streamline the process of managing and reclaiming lost items within organizations, such as companies or schools. It allows users to view, claim, and report lost items through an intuitive web interface, thereby reducing the workload on cleaning staff and improving the chances of lost items being returned to their rightful owners.
 
+# Video demo
+
+https://www.youtube.com/watch?v=nSJElIJMsXY
+
 ## Team Kumquat
 
 - Hei Wang Ng - ng.he@northeastern.edu
