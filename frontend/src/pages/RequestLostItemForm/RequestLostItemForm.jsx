@@ -1,8 +1,7 @@
-import { useState } from "react";
 import * as Form from "@radix-ui/react-form";
 import { useNavigate } from "react-router-dom";
-import RequestLostItemForm from "./RequestLostItemForm.module.css";
 import { toast } from "react-toastify";
+import RequestLostItemForm from "./RequestLostItemForm.module.css";
 
 function ReportLostItemForm() {
   const navigate = useNavigate();
@@ -18,8 +17,6 @@ function ReportLostItemForm() {
       dateLost: data.DateLost,
       location: data.Location,
     });
-
-    console.log(params.toString());
 
     try {
       const res = await fetch(`/api/request-lost-item?` + params, {

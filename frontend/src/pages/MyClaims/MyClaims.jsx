@@ -1,6 +1,6 @@
-import ItemCard from "../../../components/ItemCard/ItemCard";
 import { useQuery } from "react-query";
-import getClaimedItems from "../../../data/getClaimedItems";
+import ItemCard from "../../components/ItemCard/ItemCard";
+import getClaimedItems from "../../data/getClaimedItems";
 import MyClaimsCSS from "./MyClaims.module.css";
 
 function MyClaims() {

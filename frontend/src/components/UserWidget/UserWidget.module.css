@@ -1,0 +1,32 @@
+.DropdownMenuContent {
+  width: 150px;
+  border: 1px solid gray;
+}
+
+.DRopdownMenuTrigger {
+  cursor: pointer;
+}
+
+.DropdownMenuItem,
+.DropdownMenuCheckboxItem,
+.DropdownMenuRadioItem,
+.DropdownMenuSubTrigger {
+  font-size: 13px;
+  line-height: 1;
+  color: var(--violet-11);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  padding: 0 5px;
+  position: relative;
+  padding-left: 25px;
+  user-select: none;
+  outline: none;
+  cursor: pointer;
+  background: white;
+}
+
+.DropdownMenuItem:hover {
+  background: gray;
+}

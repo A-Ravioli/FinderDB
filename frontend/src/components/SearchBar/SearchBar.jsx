@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from './SearchBar.module.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "./SearchBar.module.css";
 
 const SearchBar = () => {
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -21,7 +21,9 @@ const SearchBar = () => {
         value={searchInput}
         className={styles.searchInput}
       />
-      <button type="submit" className={styles.searchButton}>Search</button>
+      <button type="submit" className={styles.searchButton}>
+        Search
+      </button>
     </form>
   );
 };

@@ -1,11 +1,13 @@
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
+import RequestCard from "../../components/RequestCard/RequestCard";
+import getRequests from "../../data/getRequests";
 
 function LostItemRequests() {
-  // const { data: requests } = useQuery({
-  //   queryKey: ["requests"],
-  //   queryFn: getRequests,
-  // });
+  const { data: requests } = useQuery({
+    queryKey: ["requests"],
+    queryFn: getRequests,
+  });
   const navigate = useNavigate();
 
   return (
@@ -17,6 +19,9 @@ function LostItemRequests() {
       >
         Report lost item
       </button>
+      {requests?.map((requestData) => (
+        <RequestCard requestData={requestData} />
+      ))}
     </>
   );
 }

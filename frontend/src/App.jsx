@@ -1,19 +1,20 @@
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { Cloudinary } from "@cloudinary/url-gen";
 
+import Navbar from "./components/Navbar/Navbar";
 
-import Navbar from "../components/Navbar/Navbar";
-
-import "./App.css";
-import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
+import UserContext from "./context/UserContext";
 
 const queryClient = new QueryClient();
 
 function App() {
+  const [user, setUser] = useState({ name: "Eric", id: "002828141" });
   return (
-    <div>
+    <UserContext.Provider value={{ user, setUser }}>
       <Navbar />
       <QueryClientProvider client={queryClient}>
         <div id="page-container">
@@ -21,7 +22,7 @@ function App() {
         </div>
       </QueryClientProvider>
       <ToastContainer />
-    </div>
+    </UserContext.Provider>
   );
 }
 

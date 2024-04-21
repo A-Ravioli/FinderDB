@@ -1,7 +1,7 @@
 import * as Form from "@radix-ui/react-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import uploadImage from "../../../data/uploadImage";
+import uploadImage from "../../data/uploadImage";
 import ReportFoundItemCSS from "./ReportFoundItem.module.css";
 
 function ReportFoundItem() {
@@ -21,7 +21,6 @@ function ReportFoundItem() {
       formData.append("folder", "items");
 
       const imageData = await uploadImage(formData, "asdf");
-      console.log(imageData.secure_url);
       const params = new URLSearchParams({
         dateFound: data.dateFound,
         description: data.description,

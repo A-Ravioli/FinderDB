@@ -1,7 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import ClaimItemButtonCSS from "./ClaimItemButton.module.css";
 import { useState } from "react";
 import ClaimItemForm from "../ClaimItemForm/ClaimItemForm";
+import ClaimItemButtonCSS from "./ClaimItemButton.module.css";
 
 function ClaimItemButton({ itemData }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);

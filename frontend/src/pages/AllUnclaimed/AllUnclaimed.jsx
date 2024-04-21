@@ -1,8 +1,8 @@
-import AllUnclaimedCSS from "./AllUnclaimed.module.css";
-import ItemCard from "../../../components/ItemCard/ItemCard";
 import { useQuery } from "react-query";
-import getItems from "../../../data/getItems";
 import { useNavigate } from "react-router-dom";
+import ItemCard from "../../components/ItemCard/ItemCard";
+import getItems from "../../data/getItems";
+import AllUnclaimedCSS from "./AllUnclaimed.module.css";
 
 function AllUnclaimed() {
   const { data: items } = useQuery({ queryKey: ["items"], queryFn: getItems });
@@ -18,7 +18,7 @@ function AllUnclaimed() {
         Report found item
       </button>
       {items?.map((itemData) => (
-        <ItemCard itemData={itemData} key={itemData.itemid} />
+        <ItemCard itemData={itemData} />
       ))}
     </div>
   );

@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home";
 import App from "./App";
+import "./index.css";
+import AllUnclaimed from "./pages/AllUnclaimed/AllUnclaimed";
+import Home from "./pages/Home/Home";
+import LostItemRequests from "./pages/LostItemRequests/LostItemRequests";
 import MyClaims from "./pages/MyClaims/MyClaims";
 import ReportFoundItem from "./pages/ReportFoundItem/ReportFoundItem";
 import RequestLostItemForm from "./pages/RequestLostItemForm/RequestLostItemForm";
-import LostItemRequests from "./pages/LostItemRequests/LostItemRequests";
-import AllUnclaimed from "./pages/AllUnclaimed/AllUnclaimed";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/lost-item-requests" element={<LostItemRequests />} />
           <Route path="/report-found-item" element={<ReportFoundItem />} />
           <Route path="/report-lost-item" element={<RequestLostItemForm />} />
+          <Route path="/search" element={<SearchPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

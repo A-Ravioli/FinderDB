@@ -1,0 +1,32 @@
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border: var(--primary-border);
+  border-radius: 12px;
+  width: 100%;
+}
+
+.item-info-container > *:not(:first-child) {
+  margin-top: 10px;
+}
+
+.item-name {
+  font-size: var(--primary-heading-font-size);
+}
+
+.item-info-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.item-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.delete-btn {
+  cursor: pointer;
+}

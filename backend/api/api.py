@@ -34,6 +34,18 @@ def all_items():
     cur.close()
     return jsonify(tuple_to_dict(columns, result))
 
+# Get all requests
+@app.route("/api/all-requests", methods=["GET"])
+def all_requests():
+    cur = mysql.connection.cursor()
+    cur.execute(
+        "SELECT * FROM LostRequest LEFT OUTER JOIN Employee ON LostRequest.Requester_ID = Employee.Employee_ID"
+    )
+    columns = [desc[0] for desc in cur.description]
+    result = cur.fetchall()
+    cur.close()
+    return jsonify(tuple_to_dict(columns, result))
+
 
 # Get items claimed by employee 002828141
 @app.route("/api/claimed-items", methods=["GET"])
@@ -130,7 +142,7 @@ def search():
     search_query = query.get("query")
     cur = mysql.connection.cursor()
     cur.execute(
-        "SELECT * FROM Item WHERE ItemName LIKE %s OR Description LIKE %s",
+        "SELECT * FROM Item LEFT OUTER JOIN Employee ON Item.ClaimsE_ID = Employee.Employee_ID WHERE ItemName LIKE %s OR Description LIKE %s",
         ("%" + search_query + "%", "%" + search_query + "%"),
     )
     columns = [desc[0] for desc in cur.description]
@@ -139,16 +151,17 @@ def search():
     return jsonify(tuple_to_dict(columns, result))
 
 
-# Returns all requests for lost items
-@app.route("/api/all-requests", methods=["GET"])
-def all_requests():
+@app.route("/api/delete-item", methods=["DELETE"])
+def delete_item():
+    query = request.args.to_dict()
+    item_id = query.get("itemId")
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM LostRequests")
-    columns = [desc[0] for desc in cur.description]
-    result = cur.fetchall()
+    cur.execute(
+        "DELETE FROM Item WHERE Item.ItemID = %s", (item_id,)
+    )
+    mysql.connection.commit()
     cur.close()
-    return jsonify(tuple_to_dict(columns, result))
-
+    return jsonify("Success", 200)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)

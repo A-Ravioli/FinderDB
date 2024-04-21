@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import UserWidget from "../UserWidget/UserWidget";
 import NavbarCSS from "./Navbar.module.css";
 
 function Navbar() {
@@ -18,9 +19,7 @@ function Navbar() {
           <p>My claims</p>
         </Link>
       </div>
-      <p className={NavbarCSS["login-status"]}>
-        Logged in as: Eric Intern (ID: 002828141)
-      </p>
+      <UserWidget />
     </nav>
   );
 }
