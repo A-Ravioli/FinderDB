@@ -1,11 +1,14 @@
 import * as Form from "@radix-ui/react-form";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import UserContext from "../../context/UserContext";
 import uploadImage from "../../data/uploadImage";
 import ReportFoundItemCSS from "./ReportFoundItem.module.css";
 
 function ReportFoundItem() {
   const navigate = useNavigate();
+  const { user } = useContext(UserContext);
 
   const submitReport = async (e) => {
     e.preventDefault();
@@ -27,6 +30,7 @@ function ReportFoundItem() {
         name: data.name,
         location: data.location,
         image: imageData.secure_url,
+        employeeId: user.id,
       });
       const res = await fetch(`/api/report-found-item?` + params, {
         method: "POST",

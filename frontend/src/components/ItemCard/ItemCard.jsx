@@ -42,7 +42,7 @@ function ItemCard({ itemData }) {
       <img
         src={
           itemData?.image ||
-          "https://i.kym-cdn.com/entries/icons/original/000/048/633/Screenshot_2024-02-27_at_1.49.23_PM.png"
+          `https://source.unsplash.com/random/300x200?sig=${Math.random()}`
         }
         alt=""
         className={ItemCardCSS["item-img"]}

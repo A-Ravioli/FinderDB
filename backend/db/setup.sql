@@ -16,42 +16,130 @@ CREATE TABLE IF NOT EXISTS LostRequest (
 );
 
 -- Add employees
-INSERT INTO
-    Employee (Employee_ID, FName, LName)
-VALUES ("002828141", 'Eric', 'Intern'),
-    (
-        "002818341", 'Sally', 'Developer'
-    ),
-    (
-        "002813213", 'Kendrick', 'Manager'
-    );
+INSERT INTO Employee (Employee_ID, FName, LName) VALUES 
+('002828141', 'Eric', 'Miller'),
+('696969696', 'Kendrick', 'Lamar'),
+('4204204204', 'Sally', 'Ride'),
+('000000001', 'John', 'Doe'),
+('000000002', 'Jane', 'Smith'),
+('000000003', 'Michael', 'Brown'),
+('000000004', 'Sarah', 'Johnson'),
+('000000005', 'James', 'Williams'),
+('000000006', 'Patricia', 'Jones'),
+('000000007', 'Robert', 'Garcia'),
+('000000008', 'Linda', 'Martinez'),
+('000000009', 'David', 'Rodriguez'),
+('000000010', 'Lisa', 'Wilson'),
+('000000011', 'Mark', 'Anderson'),
+('000000012', 'Nancy', 'Taylor'),
+('000000013', 'Steven', 'Thomas'),
+('000000014', 'Karen', 'Hernandez'),
+('000000015', 'Brian', 'Moore'),
+('000000016', 'Susan', 'Martin'),
+('000000017', 'Kevin', 'Lee'),
+('000000018', 'Carol', 'Perez'),
+('000000019', 'Jason', 'Clark'),
+('000000020', 'Mary', 'Lewis'),
+('000000021', 'Gary', 'Young'),
+('000000022', 'Rebecca', 'Allen'),
+('000000023', 'Jessica', 'King'),
+('000000024', 'Timothy', 'Scott'),
+('000000025', 'Laura', 'Green'),
+('000000026', 'Charles', 'Baker'),
+('000000027', 'Amy', 'Adams'),
+('000000028', 'Daniel', 'Nelson'),
+('000000029', 'Julie', 'Carter'),
+('000000030', 'Joseph', 'Mitchell'),
+('000000031', 'Cynthia', 'Roberts'),
+('000000032', 'Paul', 'Campbell'),
+('000000033', 'Melissa', 'Parker'),
+('000000034', 'Thomas', 'Evans'),
+('000000035', 'Christina', 'Edwards'),
+('000000036', 'Brian', 'Collins'),
+('000000037', 'Victoria', 'Stewart');
 
 -- Add items
-INSERT INTO
-    Item (
-        ItemID, ItemName, Status, Description, DateFound, Location, PostE_ID
-    )
-VALUES (
-        "1234123412341234", 'Keys Set', 'Unclaimed', 'A set of keys with a superhero keychain, found in the cafeteria.', '2024-04-10', 'Cafeteria', "002818341"
-    ),
-    (
-        "213891238971293874328", 'Basketball', 'Unclaimed', 'A basketball found in the gym.', '2024-04-10', 'Gym', "002818341"
-    ),
-    (
-        "120934891234872438782", 'Ocean', 'Unclaimed', 'Ocean is my son.', '2024-04-10', 'Library', "002818341"
-    );
+INSERT INTO Item (ItemID, ItemName, Status, Image, Description, DateFound, Location, ClaimsE_ID, PostE_ID) VALUES
+('I0001', 'Laptop', 'Claimed', NULL, 'A grey laptop found in the library.', '2023-04-10', 'Library', '000000002', '000000001'),
+('I0002', 'Backpack', 'Unclaimed', NULL, 'A black backpack with several textbooks.', '2023-04-12', 'Cafeteria', NULL, '000000003'),
+('I0003', 'Wallet', 'Claimed', NULL, 'A brown leather wallet with multiple credit cards.', '2023-04-15', 'Gym', '000000006', '000000005'),
+('I0004', 'Watch', 'Unclaimed', NULL, 'A silver wrist watch found near the sports field.', '2023-04-18', 'Sports Field', NULL, '000000007'),
+('I0005', 'Smartphone', 'Claimed', NULL, 'A black smartphone, model Galaxy S21.', '2023-04-20', 'Parking Lot', '000000010', '000000009'),
+('I0006', 'Keychain', 'Unclaimed', NULL, 'A set of car keys with a red keychain.', '2023-04-22', 'Main Gate', NULL, '000000011'),
+('I0007', 'Headphones', 'Claimed', NULL, 'Wireless headphones found in a case.', '2023-04-25', 'Student Center', '000000014', '000000013'),
+('I0008', 'Umbrella', 'Unclaimed', NULL, 'A large black umbrella left in a classroom.', '2023-04-27', 'Classroom 101', NULL, '000000015'),
+('I0009', 'Sunglasses', 'Claimed', NULL, 'Ray-Ban sunglasses found on a bench.', '2023-04-29', 'Park Area', '000000018', '000000017'),
+('I0010', 'Book', 'Unclaimed', NULL, 'A copy of "1984" by George Orwell found near the library.', '2023-05-01', 'Library', NULL, '000000019'),
+('I0011', 'Notebook', 'Claimed', NULL, 'A spiral notebook with notes from biology class.', '2023-05-03', 'Science Building', '000000022', '000000021'),
+('I0012', 'Pen', 'Unclaimed', NULL, 'A fountain pen found on the cafeteria floor.', '2023-05-05', 'Cafeteria', NULL, '000000023'),
+('I0013', 'Flash Drive', 'Claimed', NULL, 'A 16GB USB flash drive found in a computer lab.', '2023-05-07', 'Computer Lab', '000000026', '000000025'),
+('I0014', 'Calculator', 'Unclaimed', NULL, 'A graphing calculator left in a math class.', '2023-05-09', 'Math Building', NULL, '000000027'),
+('I0015', 'Bicycle', 'Claimed', NULL, 'A red bicycle left locked outside the library.', '2023-05-11', 'Library Entrance', '000000030', '000000029'),
+('I0016', 'Jacket', 'Unclaimed', NULL, 'A blue winter jacket found on a chair.', '2023-05-13', 'Lecture Hall', NULL, '000000031'),
+('I0017', 'Scarf', 'Claimed', NULL, 'A handmade scarf found in the art studio.', '2023-05-15', 'Art Studio', '000000034', '000000033'),
+('I0018', 'Cap', 'Unclaimed', NULL, 'A baseball cap lost during a college game.', '2023-05-17', 'Stadium', NULL, '000000035'),
+('I0019', 'Gloves', 'Claimed', NULL, 'A pair of gardening gloves found in the botanical garden.', '2023-05-19', 'Botanical Garden', NULL, '000000035'),
+('I0020', 'Gloves', 'Claimed', NULL, 'A pair of gardening gloves found in the botanical garden.', '2023-05-19', 'Botanical Garden', '000000037', '000000036'),
+('I0021', 'Earrings', 'Unclaimed', NULL, 'Gold hoop earrings found in the women’s locker room.', '2023-05-21', 'Gym Locker Room', NULL, '000000004'),
+('I0022', 'Thermos', 'Claimed', NULL, 'A stainless steel thermos found in the library.', '2023-05-23', 'Library', '000000002', '000000003'),
+('I0023', 'Tablet', 'Unclaimed', NULL, 'A black iPad found in the business hall.', '2023-05-25', 'Business Hall', NULL, '000000006'),
+('I0024', 'Chair', 'Claimed', NULL, 'A folding chair left after the outdoor concert.', '2023-05-27', 'Concert Area', '000000008', '000000007'),
+('I0025', 'Camera', 'Unclaimed', NULL, 'A digital camera found in the park.', '2023-05-29', 'Central Park', NULL, '000000010'),
+('I0026', 'Shoes', 'Claimed', NULL, 'Running shoes found on the track field.', '2023-05-31', 'Track Field', '000000012', '000000011'),
+('I0027', 'Bag', 'Unclaimed', NULL, 'A gym bag containing workout gear, found in the fitness center.', '2023-06-02', 'Fitness Center', NULL, '000000014'),
+('I0028', 'Skateboard', 'Claimed', NULL, 'A skateboard found near the student housing.', '2023-06-04', 'Student Housing', '000000016', '000000015'),
+('I0029', 'Purse', 'Unclaimed', NULL, 'A small black purse found in the lecture hall.', '2023-06-06', 'Lecture Hall', NULL, '000000018'),
+('I0030', 'Hat', 'Claimed', NULL, 'A sun hat found at the beach during the summer festival.', '2023-06-08', 'Beach Area', '000000020', '000000019'),
+('I0031', 'Necklace', 'Unclaimed', NULL, 'A pearl necklace found at the theater.', '2023-06-10', 'Theater', NULL, '000000022'),
+('I0032', 'Tie', 'Claimed', NULL, 'A silk necktie found in the conference room.', '2023-06-12', 'Conference Room', '000000024', '000000023'),
+('I0033', 'Book', 'Unclaimed', NULL, 'A novel found on a bench in the park.', '2023-06-14', 'Park Bench', NULL, '000000026'),
+('I0034', 'Scarf', 'Claimed', NULL, 'A wool scarf found during a snowstorm.', '2023-06-16', 'Main Street', '000000028', '000000027'),
+('I0035', 'Sneakers', 'Unclaimed', NULL, 'A pair of white sneakers left in the gym.', '2023-06-18', 'Gym', NULL, '000000030'),
+('I0036', 'Mittens', 'Claimed', NULL, 'A pair of mittens found at the ice skating rink.', '2023-06-20', 'Ice Rink', '000000032', '000000031'),
+('I0037', 'Umbrella', 'Unclaimed', NULL, 'A red umbrella forgotten after a rainy day.', '2023-06-22', 'Cafe Terrace', NULL, '000000034'),
+('I0038', 'Socks', 'Claimed', NULL, 'A pair of colorful socks found in a dormitory laundry room.', '2023-06-24', 'Dorm Laundry', '000000036', '000000035'),
+('I0039', 'Backpack', 'Unclaimed', NULL, 'A green hiking backpack left at the trail entrance.', '2023-06-26', 'Trail Entrance', NULL, '000000035'),
+('I0040', 'Backpack', 'Unclaimed', NULL, 'Another backpack', '2023-06-26', 'Trail Entrance', NULL, '000000035');
 
 -- Add LostRequst
-INSERT INTO
-    LostRequest (
-        Requester_ID, ItemName, Description, DateLost, Location, Status
-    )
-VALUES (
-        "002828141", 'Keys Set', 'A set of keys with a superhero keychain, found in the cafeteria.', '2024-04-10', 'Cafeteria', 'Unclaimed'
-    ),
-    (
-        "002828141", 'Basketball', 'A basketball found in the gym.', '2024-04-10', 'Gym', 'Unclaimed'
-    ),
-    (
-        "002828141", 'Ocean', 'Ocean is my son.', '2024-04-10', 'Library', 'Unclaimed'
-    );
+INSERT INTO LostRequest (Requester_ID, ItemName, Description, DateLost, Location, Status) VALUES 
+('000000001', 'Laptop', 'Black Dell laptop with a company sticker on the cover', '2023-04-01', 'Conference Room', 'Pending'),
+('000000002', 'Smartphone', 'iPhone 12, blue case, cracked screen', '2023-04-02', 'Cafeteria', 'Pending'),
+('000000003', 'Backpack', 'Grey backpack containing notebooks and a water bottle', '2023-04-03', 'Library', 'Pending'),
+('000000004', 'Watch', 'Silver wrist watch, Seiko brand', '2023-04-04', 'Gym', 'Pending'),
+('000000005', 'Wallet', 'Brown leather wallet containing ID and credit cards', '2023-04-05', 'Parking Lot', 'Pending'),
+('000000006', 'Sunglasses', 'Ray-Ban aviator sunglasses, gold frame', '2023-04-06', 'Park', 'Pending'),
+('000000007', 'Jacket', 'Blue denim jacket, size medium', '2023-04-07', 'Auditorium', 'Pending'),
+('000000008', 'Headphones', 'Black wireless headphones, Sony brand', '2023-04-08', 'Bus Stop', 'Pending'),
+('000000009', 'Keychain', 'Car keys with a red Tesla key fob', '2023-04-09', 'Lecture Hall', 'Pending'),
+('000000010', 'Pen', 'Mont Blanc fountain pen, black with gold trim', '2023-04-10', 'Meeting Room', 'Pending'),
+('000000011', 'Notebook', 'Red notebook with physics notes', '2023-04-11', 'Classroom 204', 'Pending'),
+('000000012', 'Umbrella', 'Large black golf umbrella', '2023-04-12', 'Main Entrance', 'Pending'),
+('000000013', 'Thermos', 'Stainless steel thermos, 1 liter', '2023-04-13', 'Staff Lounge', 'Pending'),
+('000000014', 'Book', '"The Great Gatsby" paperback with notes in margins', '2023-04-14', 'English Dept', 'Pending'),
+('000000015', 'Scarf', 'Wool scarf, black and white check pattern', '2023-04-15', 'Art Gallery', 'Pending'),
+('000000016', 'Tablet', 'iPad Air, silver, with a blue cover', '2023-04-16', 'Design Studio', 'Pending'),
+('000000017', 'Camera', 'Nikon DSLR, black, with a zoom lens', '2023-04-17', 'Photography Lab', 'Pending'),
+('000000018', 'Cap', 'Baseball cap, red, Boston Red Sox logo', '2023-04-18', 'Sports Complex', 'Pending'),
+('000000019', 'Gloves', 'Pair of gardening gloves, green', '2023-04-19', 'Botanical Gardens', 'Pending'),
+('000000020', 'Shoes', 'Running shoes, Nike, black and white', '2023-04-20', 'Track Field', 'Pending'),
+('000000021', 'Bag', 'Black messenger bag with laptop and documents', '2023-04-21', 'Admin Office', 'Pending'),
+('000000022', 'Skateboard', 'Wooden skateboard, green and black design', '2023-04-22', 'Student Parking', 'Pending'),
+('000000023', 'Purse', 'Small leather purse, beige', '2023-04-23', 'Theater', 'Pending'),
+('000000024', 'Hat', 'Straw hat with a wide brim and a ribbon', '2023-04-24', 'Lake Side', 'Pending'),
+('000000025', 'Necklace', 'Silver necklace with a heart pendant', '2023-04-25', 'Fine Arts Center', 'Pending'),
+('000000026', 'Tie', 'Silk tie, navy blue with red stripes', '2023-04-26', 'Business Center', 'Pending'),
+('000000027', 'Book', 'Accounting textbook with sticky notes', '2023-04-27', 'Finance Dept', 'Pending'),
+('000000028', 'Scarf', 'Silk scarf, floral pattern, multicolored', '2023-04-28', 'Visitor Center', 'Pending'),
+('000000029', 'Sneakers', 'Adidas sneakers, white with green stripes', '2023-04-29', 'Gym Locker Room', 'Pending'),
+('000000030', 'Mittens', 'Knitted mittens, pink and gray', '2023-04-30', 'Outdoor Market', 'Pending'),
+('000000031', 'Umbrella', 'Compact umbrella, polka dots', '2023-05-01', 'Coffee Shop', 'Pending'),
+('000000032', 'Socks', 'Sports socks, ankle length, pack of 3', '2023-05-02', 'Dormitory', 'Pending'),
+('000000033', 'Backpack', 'Hiking backpack, large, red', '2023-05-03', 'Nature Trail', 'Pending'),
+('000000034', 'Earrings', 'Pair of diamond stud earrings', '2023-05-04', 'Jewelry Store', 'Pending'),
+('000000035', 'Cap', 'Golf cap, light blue, with a visor', '2023-05-05', 'Golf Course', 'Pending'),
+('000000036', 'Wallet', 'Tri-fold wallet, dark blue, leather', '2023-05-06', 'Parking Garage', 'Pending'),
+('000000037', 'Shirt', 'Dress shirt, white, button-down', '2023-05-07', 'Conference Center', 'Pending'),
+('4204204204', 'Scarf', 'Cashmere scarf, burgundy', '2023-05-08', 'Holiday Market', 'Pending'),
+('696969696', 'Headphones', 'Beats headphones, red, over-ear', '2023-05-09', 'Music Room', 'Pending'),
+('002828141', 'Bracelet', 'Leather bracelet with metal clasp', '2023-05-10', 'Art Fair', 'Pending');
