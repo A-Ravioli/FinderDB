@@ -15,9 +15,9 @@ function UserWidget() {
         asChild
         className={UserWidgetCSS["DropdownMenuTrigger"]}
       >
-        <p>
+        <div>
           {user.name} (ID: {user.id})
-        </p>
+        </div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content className={UserWidgetCSS["DropdownMenuContent"]}>

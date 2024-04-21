@@ -3,6 +3,6 @@
   flex-direction: column;
 }
 
-#items-container > *:not(:first-child) {
+#items-container > * {
   margin-top: 20px;
 }

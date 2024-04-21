@@ -47,11 +47,13 @@ def all_requests():
     return jsonify(tuple_to_dict(columns, result))
 
 
-# Get items claimed by employee 002828141
+# Get items `claimed` by employee 002828141
 @app.route("/api/claimed-items", methods=["GET"])
 def claimed_items():
+    query = request.args.to_dict()
     cur = mysql.connection.cursor()
-    cur.execute("""SELECT * FROM Item WHERE ClaimsE_ID = 002828141""")
+    emp_id = query.get("employeeId")
+    cur.execute("""SELECT * FROM Item WHERE ClaimsE_ID = %s""", (emp_id,))
     columns = [desc[0] for desc in cur.description]
     result = cur.fetchall()
     cur.close()

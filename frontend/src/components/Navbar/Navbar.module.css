@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--primary-horizontal-padding);
+  background: black;
   height: 80px;
   border-bottom: var(--primary-border);
 }
@@ -15,7 +16,7 @@
 .nav-links > * {
   cursor: pointer;
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .nav-links > *:not(:first-child) {
@@ -23,7 +24,8 @@
 }
 
 #logo {
-  color: black;
+  color: white;
+
   text-decoration: none;
   font-weight: bold;
   font-size: var(--primary-heading-font-size);

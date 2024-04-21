@@ -3,8 +3,9 @@
   border: 1px solid gray;
 }
 
-.DRopdownMenuTrigger {
+.DropdownMenuTrigger {
   cursor: pointer;
+  color: white;
 }
 
 .DropdownMenuItem,
