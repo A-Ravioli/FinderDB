@@ -1,0 +1,30 @@
+/* SearchBar.module.css */
+
+.searchBarContainer {
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .searchInput {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+  }
+  
+  .searchButton {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .searchButton:hover {
+    background-color: #0056b3;
+  }
+  

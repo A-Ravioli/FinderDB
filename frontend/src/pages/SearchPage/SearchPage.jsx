@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import styles from './SearchPage.module.css';
 
 const useQuery = () => new URLSearchParams(useLocation().search);
 
@@ -10,7 +11,7 @@ const SearchPage = () => {
   useEffect(() => {
     const searchTerm = query.get("q");
     if (searchTerm) {
-      fetch(`/api/search-items?q=${encodeURIComponent(searchTerm)}`)
+      fetch(`/api/search?q=${encodeURIComponent(searchTerm)}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -27,22 +28,20 @@ const SearchPage = () => {
   }, [query]);
 
   return (
-    <div>
+    <div className={styles.searchResultsContainer}>
       <h2>Search Results</h2>
       {items.length > 0 ? (
         <ul>
           {items.map((item, index) => (
-            <li key={index}>
-              <h3>{item.ItemName}</h3>
-              <p>{item.Description}</p>
-              {/* Optionally display image if exists */}
-              {item.Image && <img src={item.Image} alt={item.ItemName} style={{ width: '100px' }} />}
-              <p>Found on: {new Date(item.DateFound).toLocaleDateString()}</p>
+            <li key={index} className={styles.searchResultItem}>
+              <h3 className={styles.searchResultHeader}>{item.ItemName}</h3>
+              <p className={styles.searchResultText}>{item.Description}</p>
+              {/* ... other parts of the item */}
             </li>
           ))}
         </ul>
       ) : (
-        <p>No items found.</p>
+        <p className={styles.noResultsMessage}>No items found.</p>
       )}
     </div>
   );

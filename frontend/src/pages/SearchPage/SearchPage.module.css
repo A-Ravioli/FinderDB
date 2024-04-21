@@ -1,0 +1,33 @@
+/* SearchPage.module.css */
+
+.searchResultsContainer {
+    padding: 1rem;
+  }
+  
+  .searchResultItem {
+    border-bottom: 1px solid #eee;
+    padding: 1rem 0;
+  }
+  
+  .searchResultHeader {
+    margin: 0;
+    color: #333;
+  }
+  
+  .searchResultText {
+    color: #666;
+    margin-top: 0.5rem;
+  }
+  
+  .searchResultImage {
+    width: 100px;
+    height: auto;
+    margin-top: 1rem;
+  }
+  
+  .noResultsMessage {
+    color: #999;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
