@@ -29,6 +29,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 Before you begin, ensure you have the following installed:
+
 - Python 3.8 or later
 - Node.js 14 or later
 - A SQL database (PostgreSQL, MySQL, SQLite, etc.)
@@ -45,45 +46,37 @@ cd finderdb/backend
 2. **Install Dependencies**
 
 ```bash
-pip install -r requirements.txt
+cd frontend
+npm i
 ```
 
-3. **Configure the Database**
-
-Edit the `config.py` file to include your database connection details.
-
-4. **Initialize the Database**
+3. **Run the Backend Server**
 
 ```bash
-flask db upgrade
+cd backend
+docker-compose up --build
 ```
 
-5. **Run the Backend Server**
-
-```bash
-flask run
-```
-
-The backend server will start on `http://localhost:5000`.
+The backend server will start on `http://localhost:8000`.
 
 ### Setting up the Frontend
 
 1. **Navigate to the Frontend Directory**
 
 ```bash
-cd finderdb/frontend
+cd frontend
 ```
 
 2. **Install Dependencies**
 
 ```bash
-npm install
+npm i
 ```
 
 3. **Run the Frontend Application**
 
 ```bash
-npm start
+npm run dev
 ```
 
 The application will be available at `http://localhost:3000`.
